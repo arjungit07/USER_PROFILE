@@ -87,18 +87,18 @@ const createProfile = async (req, res) => {
   }
 };
 
-const deleteProfile = async (req, res) => {
-  const { id } = req.params;
+  const deleteProfile = async (req, res) => {
+    const profile = req.profile
 
-  try {
-    await Profile.findByIdAndDelete(id);
+    try {
+      await Profile.findByIdAndDelete(profile._id);
 
-    res.status(200).json({ message: "Profile deleted successfully" });
-  } catch (error) {
-    console.error("Error in deleting profile", error);
-    res.status(500).json({ message: "Server error. Please try again." });
-  }
-};
+      res.status(200).json({ message: "Profile deleted successfully" });
+    } catch (error) {
+      console.error("Error in deleting profile", error);
+      res.status(500).json({ message: "Server error. Please try again." });
+    }
+  };
 
 const getProfile = async (req, res) => {
   try {

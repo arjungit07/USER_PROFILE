@@ -1,10 +1,10 @@
 const { Profile } = require("../models/profile");
 
 const isProfileOwnerOrAdmin = async(req, res, next) => {
-  const profileId = req.params.id;
+  const userId = req.user._id
 
   try {
-    const profile = await Profile.findById(profileId);
+    const profile = await Profile.findOne({user : userId});
 
     if (!profile) {
       return res.status(404).json({ message: "Profile not found" });

@@ -8,9 +8,9 @@ const router = require("express").Router();
 router.post("/register", registerUser)
 router.post("/login", loginUser)
 router.post("/create_profile", authenticateToken, createProfile)
-router.delete("/delete_profile/:id", authenticateToken, isProfileOwnerOrAdmin, deleteProfile);
-router.get("/get_profile/:id", authenticateToken, isProfileOwnerOrAdmin, getProfile)
-router.put("/update_profile/:id" , authenticateToken, isProfileOwnerOrAdmin, updateProfile)
+router.delete("/delete_profile", authenticateToken, isProfileOwnerOrAdmin, deleteProfile);
+router.get("/get_profile", authenticateToken, isProfileOwnerOrAdmin, getProfile)
+router.put("/update_profile" , authenticateToken, isProfileOwnerOrAdmin, updateProfile)
 
 
 module.exports = router;
